@@ -9,4 +9,4 @@ def print_on_python(x):
 eel.printOnJs('Hello from Python!') # Call a Javascript function
 eel.setEnv('dev')
 
-eel.start('main.html', size=(768, 576)) # Start
+eel.start('index.html', size=(768, 576)) # Start

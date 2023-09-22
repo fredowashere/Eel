@@ -1,0 +1,105 @@
+<div style="display: grid; place-content: center; width: 100vw; height: 100vh;">
+    <div class="card card-body shadow" style="width: 360px;">
+
+        <div class="border rounded mb-3 p-1">
+            <ul class="nav nav-pills nav-fill">
+    
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        ng-class="{ 'active': nav === 'host' }"
+                        href="javascript:void(0)"
+                        ng-click="nav = 'host'"
+                    >
+                        <i class="bi bi-building-fill"></i> Host
+                    </a>
+                </li>
+    
+                <li class="nav-item">
+                    <a
+                        class="nav-link"
+                        ng-class="{ 'active': nav === 'guest' }"
+                        href="javascript:void(0)"
+                        ng-click="nav = 'guest'"
+                    >
+                        Guest <i class="bi bi-person-fill"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div ng-if="nav === 'host'">
+
+            <div class="form-floating mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder=""
+                >
+                <label for="email">Email address</label>
+            </div>
+    
+            <div class="form-floating mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder=""
+                >
+                <label for="password">Password</label>
+            </div>
+    
+            <div class="text-center">
+                <button
+                    class="btn btn-primary"
+                    ng-click="handle();"
+                >
+                    Login <i class="bi bi-box-arrow-in-right"></i>
+                </button>
+                <a href="#!workspaces">Workspaces</a>
+            </div>
+        </div>
+
+        <div ng-if="nav === 'guest'">
+
+            <div class="form-floating mb-3">
+                <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    placeholder=""
+                >
+                <label for="email">Email address</label>
+            </div>
+    
+            <div class="form-floating mb-3">
+                <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    placeholder=""
+                >
+                <label for="password">Password</label>
+            </div>
+
+            <div class="form-floating mb-3">
+                <select class="form-select" id="organization">
+                    <option selected>-- Choose organization --</option>
+                    <option ng-repeat="org in orgs">{{ org.name }}</option>
+                </select>
+                <label for="organization">Organization</label>
+            </div>
+    
+            <div class="text-center">
+                <button
+                    class="btn btn-primary"
+                    ng-click="handle();"
+                >
+                    Login <i class="bi bi-box-arrow-in-right"></i>
+                </button>
+                <a href="#!workspaces">Workspaces</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<!doctype html>
+<html ng-app="AppModule">
+    <head>
+        <base href="/index.html">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap-with-vars.css">
+        <link rel="stylesheet" href="/assets/css/styles.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+        <script src="/eel.js"></script>
+        <script src="/components/login/login.js"></script>
+        <script src="/components/book/book.js"></script>
+        <script src="/components/chapter/chapter.js"></script>
+        <script src="/app.variables.js"></script>
+        <script src="/app.module.js"></script>
+    </head>
+    
+    <body>
+
+        <!-- <login></login> -->
+
+        <div ng-controller="MainController">
+            Choose:
+            <a href="/Login">Login</a> |
+            <a href="/Book/Moby">Moby</a> |
+            <a href="/Book/Moby/Chapter/1">Moby: Ch1</a> |
+            <a href="/Book/Gatsby">Gatsby</a> |
+            <a href="/Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
+            <a href="/Book/Scarlet">Scarlet Letter</a><br/>
+          
+            <div ng-view></div>
+          
+            <hr />
+          
+            <pre>$location.path() = {{$location.path()}}</pre>
+            <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+            <pre>$route.current.params = {{$route.current.params}}</pre>
+            <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+            <pre>$routeParams = {{$routeParams}}</pre>
+          </div>
+    </body>
+</html>
