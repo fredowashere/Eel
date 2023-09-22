@@ -119,6 +119,14 @@
                     </div>
                 </button>
             </div>
+
+        </div>
+        
+        <div class="toast bg-danger text-light show p-2 mt-2" ng-if="error.showError">
+            <div class="d-flex">
+                <div class="toast-body">{{error.message}}</div>
+                <button type="button" class="btn-close me-2 m-auto" ng-click="error.showError = false;"></button>
+            </div>
         </div>
     </div>
 </div>

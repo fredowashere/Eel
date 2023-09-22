@@ -5,6 +5,11 @@
 
             $scope.loading = false;
 
+            $scope.error = {
+                showError: false,
+                message: undefined
+            };
+
             $scope.nav = "host";
             $scope.orgs = [];
 
@@ -28,9 +33,11 @@
                     );
 
                     eel.print_on_python(token.data);
+                    $scope.error.showError = false;
                 }
                 catch(ex) {
-                    // ToDo: handle error
+                    $scope.error.showError = true;
+                    $scope.error.message = ex.data;
                 }
                 finally {
                     $scope.loading = false;
@@ -64,9 +71,11 @@
                     );
 
                     eel.print_on_python(token.data);
+                    $scope.error.showError = false;
                 }
                 catch(ex) {
-                    // ToDo: handle error
+                    $scope.error.showError = true;
+                    $scope.error.message = ex.data;
                 }
                 finally {
                     $scope.loading = false;
