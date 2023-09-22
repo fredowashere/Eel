@@ -36,6 +36,7 @@
                     class="form-control"
                     id="email"
                     placeholder=""
+                    ng-model="host.email"
                 >
                 <label for="email">Email address</label>
             </div>
@@ -46,6 +47,7 @@
                     class="form-control"
                     id="password"
                     placeholder=""
+                    ng-model="host.password"
                 >
                 <label for="password">Password</label>
             </div>
@@ -53,11 +55,15 @@
             <div class="text-center">
                 <button
                     class="btn btn-primary"
-                    ng-click="handle();"
+                    ng-click="hostLogin();"
                 >
-                    Login <i class="bi bi-box-arrow-in-right"></i>
+                    <div ng-if="loading">
+                        <span class="spinner-border spinner-border-sm"></span>
+                    </div>
+                    <div ng-if="!loading">
+                        Login <i class="bi bi-box-arrow-in-right"></i>
+                    </div>
                 </button>
-                <a href="#!workspaces">Workspaces</a>
             </div>
         </div>
 
@@ -69,6 +75,8 @@
                     class="form-control"
                     id="email"
                     placeholder=""
+                    ng-model="guest.email"
+                    ng-change="getHosts(guest.email)"
                 >
                 <label for="email">Email address</label>
             </div>
@@ -79,14 +87,21 @@
                     class="form-control"
                     id="password"
                     placeholder=""
+                    ng-model="guest.password"
                 >
                 <label for="password">Password</label>
             </div>
 
             <div class="form-floating mb-3">
-                <select class="form-select" id="organization">
-                    <option selected>-- Choose organization --</option>
-                    <option ng-repeat="org in orgs">{{ org.name }}</option>
+                <select
+                    class="form-select"
+                    id="organization"
+                    ng-model="guest.host"
+                >
+                    <option value="">-- Choose an org --</option>
+                    <option ng-repeat="org in orgs" ng-value="{{org}}">
+                        {{ org.organizationName }}
+                    </option>
                 </select>
                 <label for="organization">Organization</label>
             </div>
@@ -94,11 +109,15 @@
             <div class="text-center">
                 <button
                     class="btn btn-primary"
-                    ng-click="handle();"
+                    ng-click="guestLogin();"
                 >
-                    Login <i class="bi bi-box-arrow-in-right"></i>
+                    <div ng-if="loading">
+                        <span class="spinner-border spinner-border-sm"></span>
+                    </div>
+                    <div ng-if="!loading">
+                        Login <i class="bi bi-box-arrow-in-right"></i>
+                    </div>
                 </button>
-                <a href="#!workspaces">Workspaces</a>
             </div>
         </div>
     </div>

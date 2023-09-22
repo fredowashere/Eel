@@ -1,7 +1,5 @@
 (function() {
 
-    selectedEnv = APP_ENVIRONMENTS[APP_ENV_NAME];
-
     eel.expose(printOnJs);
     function printOnJs(x) {
         console.log(x);
@@ -10,8 +8,8 @@
     eel.expose(setEnv);
     function setEnv(name) {
         APP_ENV_NAME = name;
-        selectedEnv = APP_ENVIRONMENTS[name];
-        console.log("ENV", selectedEnv);
+        env = APP_ENVIRONMENTS[name];
+        console.log("ENV", env);
     }
 
     eel.print_on_python("Hello from JavaScript!");
@@ -27,22 +25,25 @@
             ]
         )
         .controller("MainController", function($scope, $route, $routeParams, $location) {
+
             $scope.$route = $route;
             $scope.$location = $location;
             $scope.$routeParams = $routeParams;
+
+            $location.url("/login");
         })
         .config(function($routeProvider, $locationProvider) {
 
             $routeProvider
-                .when("/Login", {
+                .when("/login", {
                     templateUrl: "/components/login/login.html",
                     controller: "LoginController"
                 })
-                .when("/Book/:bookId", {
-                    templateUrl: "/compontents/book/book.html",
+                .when("/book/:bookId", {
+                    templateUrl: "/components/book/book.html",
                     controller: "BookController"
                 })
-                .when("/Book/:bookId/Chapter/:chapterId", {
+                .when("/book/:bookId/chapter/:chapterId", {
                     templateUrl: "/components/chapter/chapter.html",
                     controller: "ChapterController"
                 });
